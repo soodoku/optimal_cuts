@@ -26,7 +26,7 @@ set.seed(123)
 data <- rnorm(10000)
 ```
 
-Solve the optimization problem. 
+### 1. Solve the optimization problem.
 
 ```{r}
 ## Objective Function
@@ -69,9 +69,9 @@ mse <- mean((data - binned_data)^2)
 cat("Mean Squared Error (MSE) for Optimal with K of 15:", mse, "\n")
 ```
 
-2. CART solution [here](tree_split.ipynb) as R flakes. Bug in rpart.
+### 2. CART solution [here](tree_split.ipynb) as R flakes. Bug in rpart.
 
-3. Percentile binning
+### 3.  Percentile binning
 
 ```{r}
 # Set the number of percentiles (bins)
@@ -93,7 +93,7 @@ mse <- mean((data - binned_data)^2)
 cat("Mean Squared Error (MSE) for percentile =", mse, "\n")
 ```
 
-4. K-Means
+### 4.  K-Means
 
 ```{r}
 # Apply k-means clustering
@@ -116,7 +116,7 @@ mse <- mean((data - binned_data)^2)
 cat("Mean Squared Error (MSE) for kmeans for k = 15 =", mse)
 ```
 
-5.  Using Freedman Diaconis Rule but with linear binning (which can result in bins w/ 0 entries) yield excellent results (though note the number of bins).
+### 5.  Using Freedman Diaconis Rule but with linear binning (which can result in bins w/ 0 entries) yield excellent results (though note the number of bins).
 
 ```{r}
 library(MASS)
@@ -142,7 +142,7 @@ mse <- mean((data - binned_data)^2)
 cat("Mean Squared Error (MSE) for Freedman-Diaconis binning:", mse, "\n")
 ```
 
-Let's find the optimal number of bins using Sturges' method.
+Let's find the optimal number of bins using Sturges' method. And then do linear binning for MSE.
 
 ```{r}
 # Calculate the number of bins using Sturges' formula

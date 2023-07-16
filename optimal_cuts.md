@@ -22,7 +22,7 @@ Let’s generate some normally distributed data.
     # Simulate data from a unit normal distribution
     data <- rnorm(10000)
 
-Solve the optimization problem.
+### 1. Solve the optimization problem.
 
     ## Objective Function
     # Define the objective function to minimize the MSE
@@ -65,11 +65,9 @@ Solve the optimization problem.
 
     ## Mean Squared Error (MSE) for Optimal with K of 15: 0.04129698
 
-1.  CART solution [here](tree_split.ipynb) as R flakes. Bug in rpart.
+### 2. CART solution [here](tree_split.ipynb) as R flakes. Bug in rpart.
 
-2.  Percentile binning
-
-<!-- -->
+### 3. Percentile binning
 
     # Set the number of percentiles (bins)
     k <- 15
@@ -91,9 +89,7 @@ Solve the optimization problem.
 
     ## Mean Squared Error (MSE) for percentile = 0.0242557
 
-1.  K-Means
-
-<!-- -->
+### 4. K-Means
 
     # Apply k-means clustering
     k <- 15  # Number of clusters
@@ -116,11 +112,7 @@ Solve the optimization problem.
 
     ## Mean Squared Error (MSE) for kmeans for k = 15 = 0.0106888
 
-1.  Using Freedman Diaconis Rule but with linear binning (which can
-    result in bins w/ 0 entries) yield excellent results (though note
-    the number of bins).
-
-<!-- -->
+### 5. Using Freedman Diaconis Rule but with linear binning (which can result in bins w/ 0 entries) yield excellent results (though note the number of bins).
 
     library(MASS)
 
@@ -148,7 +140,8 @@ Solve the optimization problem.
 
     ## Mean Squared Error (MSE) for Freedman-Diaconis binning: 0.001284303
 
-Let’s find the optimal number of bins using Sturges’ method.
+Let’s find the optimal number of bins using Sturges’ method. And then do
+linear binning for MSE.
 
     # Calculate the number of bins using Sturges' formula
     num_bins <- ceiling(log2(length(data)) + 1)
